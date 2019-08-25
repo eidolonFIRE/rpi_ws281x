@@ -9,6 +9,7 @@
 // parameters and arrays.
 %include "stdint.i"
 %include "carrays.i"
+%array_class(uint32_t, uint32array);
 
 // Declare functions which will be exported as anything in the ws2811.h header.
 %{
