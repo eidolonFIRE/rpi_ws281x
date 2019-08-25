@@ -86,9 +86,6 @@ class Adafruit_NeoPixel(object):
 		# Grab the led data array.
 		self._led_data = _LED_Data(self._channel, num)
 
-		self.led_buf = ws.ws2811_channel_t_leds_get(self._channel)
-		print("LED buffer: {}".format(self.led_buf))
-
 		# Substitute for __del__, traps an exit condition and cleans up properly
 		atexit.register(self._cleanup)
 
@@ -107,6 +104,9 @@ class Adafruit_NeoPixel(object):
 		if resp != ws.WS2811_SUCCESS:
 			message = ws.ws2811_get_return_t_str(resp)
 			raise RuntimeError('ws2811_init failed with code {0} ({1})'.format(resp, message))
+
+		self.led_buf = ws.ws2811_channel_t_leds_get(self._channel)
+		print("LED buffer: {}".format(self.led_buf))
 
 	def show(self):
 		"""Update the display with the data from the LED buffer."""
