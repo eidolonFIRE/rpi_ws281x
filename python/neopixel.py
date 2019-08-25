@@ -105,9 +105,6 @@ class Adafruit_NeoPixel(object):
 			message = ws.ws2811_get_return_t_str(resp)
 			raise RuntimeError('ws2811_init failed with code {0} ({1})'.format(resp, message))
 
-		self.led_buf = ws.ws2811_channel_t_leds_get(self._channel)
-		print("LED buffer: {}".format(self.led_buf))
-
 	def show(self):
 		"""Update the display with the data from the LED buffer."""
 		resp = ws.ws2811_render(self._leds)
