@@ -86,6 +86,9 @@ class Adafruit_NeoPixel(object):
 		# Grab the led data array.
 		self._led_data = _LED_Data(self._channel, num)
 
+		self.led_buf = ws.ws2811_channel_t_leds_get(self._channel)
+		print("LED buffer: {}".format(self.led_buf))
+
 		# Substitute for __del__, traps an exit condition and cleans up properly
 		atexit.register(self._cleanup)
 
