@@ -46,7 +46,7 @@
         return &ws->channel[channelnum];
     }
 
-    void set_buffer(ws2811_channel_t *channel, void *buf)
+    void set_buffer(ws2811_channel_t *channel, unsigned char *buf)
     {
         channel->leds = (ws2811_led_t*)buf;
     }
